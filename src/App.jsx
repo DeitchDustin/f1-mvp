@@ -27,6 +27,14 @@ const [champsInfo, setChampsInfo] = useState('');
 // Driver Standings
 const [driverStandings, setDriverStandings] = useState('')
 
+// Constructors Standings
+const [constructors, setConstructors] = useState('')
+
+// Past Races
+const [past, setPast] = useState('')
+
+//future Races
+const [future, setFuture] = useState('')
 
 // GETS
   const getChamps = () => {
@@ -61,12 +69,61 @@ const [driverStandings, setDriverStandings] = useState('')
       });
   };
 
- // http://ergast.com/api/f1/2022/driverStandings.json
+  // Get Constructors Standings
+  const getConstructors = () => {
+    axios({
+      url: `http://ergast.com/api/f1/2022/constructorStandings.json`,
+      method: "get",
+      headers: {
+      },
+    })
+      .then((response) => {
+       setConstructors(response.data.MRData.StandingsTable.StandingsLists[0])
+      })
+      .catch((err) => {
+        console.log("Breaking in Get Driver", err);
+      });
+  };
+
+  // Get Results for Past Races
+  const getResults = () => {
+    axios({
+      url: `http://ergast.com/api/f1/2022/results/1.json`,
+      method: "get",
+      headers: {
+      },
+    })
+      .then((response) => {
+        setPast(response.data.MRData.RaceTable)
+      })
+      .catch((err) => {
+        console.log("Breaking in Get Driver", err);
+      });
+  };
+// Get Schedule
+const getSched = () => {
+  axios({
+    url: `http://ergast.com/api/f1/current.json`,
+    method: "get",
+    headers: {
+    },
+  })
+    .then((response) => {
+      console.log(response.data.MRData.RaceTable)
+    })
+    .catch((err) => {
+      console.log("Breaking in Get Driver", err);
+    });
+};
+
 
 // Invoking
   useEffect(() => {
     getChamps();
     getDriverStandings();
+    getConstructors();
+    getResults();
+    getSched();
   }, []);
 
     return (
@@ -90,7 +147,7 @@ const [driverStandings, setDriverStandings] = useState('')
               setDrivers(true),
               setStandings(false),
               setChamps(false)
-            }}>Current Drivers
+            }}>Driver Standings
           </button>
           <button  onClick={(e) =>
             {
@@ -111,8 +168,8 @@ const [driverStandings, setDriverStandings] = useState('')
         </Mainbuttons>
 
        {drivers ? <CurrentDrivers driverStandings={driverStandings}/> : null }
-       { schedule ? <CurrentSchedule/> : null}
-       {standings ? <Constructors/> : null }
+       { schedule ? <CurrentSchedule past={past} future={future}/> : null}
+       {standings ? <Constructors constructors={constructors}/> : null }
        {champs ? <Champions champsInfo={champsInfo}/> : null }
       </>
     );

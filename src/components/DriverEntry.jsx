@@ -5,12 +5,11 @@ const DriverEntry = ({driver}) => {
 
   return (
     <div>
-      {console.log(driver)}
       <h3>Position: #{driver.position}</h3>
       <div>
       <b>Name: </b> {driver.Driver.givenName} {' '}
          {driver.Driver.familyName} {' '}
-         <b>Driver#: </b> {driver.Driver.permanentNumber}
+         <b>Driver#: </b> {driver.Driver.permanentNumber !== 'undefined' ? driver.Driver.permanentNumber : 'N/A'}
       </div>
       <b>Constructor:</b> {driver.Constructors[0].name}
       <div>

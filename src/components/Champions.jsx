@@ -3,7 +3,9 @@ import { hot } from 'react-hot-loader/root';
 import ChampionsEntry from './ChampionsEntry.jsx';
 
 const Champions = ({champsInfo}) => {
-
+  let sortChamps = champsInfo.sort(function(a, b) {
+    return a - b;
+  })
   return (
     <div>
       <h2>Past Champions</h2>

@@ -16,7 +16,7 @@ const ChampionsEntry = ({champ}) => {
     <b>Points:</b> {champ.DriverStandings[0].points} {' '}
     <b>Nationality:</b> {champ.DriverStandings[0].Driver.nationality} {' '}
     <b>Constructor:</b> {champ.DriverStandings[0].Constructors[0].name} {' '}
-     <hr class="solid"></hr>
+     <hr className="solid"></hr>
     </ChampsWrapper>
   )
 }
