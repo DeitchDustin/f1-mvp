@@ -2,12 +2,14 @@ import React from 'react'
 import { hot } from 'react-hot-loader/root';
 import ChampionsEntry from './ChampionsEntry.jsx';
 
-const Champions = () => {
+const Champions = ({champsInfo}) => {
 
   return (
     <div>
       <h2>Past Champions</h2>
-      <ChampionsEntry/>
+      {champsInfo.map((champ, index) =>
+        (<ChampionsEntry champ={champ} key={index}/>)
+     )}
     </div>
   )
 }

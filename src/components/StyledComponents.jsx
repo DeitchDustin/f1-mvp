@@ -12,3 +12,7 @@ export const MainHeader = styled.h1`
   color: white;
   background-color: red;
 `
+
+export const ChampsWrapper = styled.div`
+  margin: 5px
+`

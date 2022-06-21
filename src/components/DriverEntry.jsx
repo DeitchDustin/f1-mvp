@@ -1,25 +1,27 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root';
 
-const DriverEntry = () => {
+const DriverEntry = ({driver}) => {
 
   return (
     <div>
-      <h3>Position: </h3>
+      {console.log(driver)}
+      <h3>Position: #{driver.position}</h3>
       <div>
-        Name:
-        Driver#:
+      <b>Name: </b> {driver.Driver.givenName} {' '}
+         {driver.Driver.familyName} {' '}
+         <b>Driver#: </b> {driver.Driver.permanentNumber}
       </div>
-      Constructor:
+      <b>Constructor:</b> {driver.Constructors[0].name}
       <div>
-        Season Points:
-        Season Wins:
+        <b>Season Points:</b>  {driver.points} {' '} |
+        {' '}<b>Season Wins:</b> {driver.wins} {' '}
       </div>
       <div>
-        Nationality:
-        Birthday:
+      <b>Nationality: </b> {driver.Driver.nationality} {' '}
+     | <b>Birthday: </b> {driver.Driver.dateOfBirth} {' '}
       </div>
-      Wiki Page:
+      <b>Wiki page: </b> <a href={driver.Driver.url}>{driver.Driver.url}</a>
     </div>
   )
 }
