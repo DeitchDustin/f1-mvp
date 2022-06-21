@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { hot } from 'react-hot-loader/root';
 
 const CurrentSchedule = () => {
 
   return (
     <div>
-      Current Schedule
+      <h2>Current Schedule</h2>
     </div>
   )
 }

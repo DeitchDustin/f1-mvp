@@ -43,8 +43,3 @@ npm test
 ## Credits
 
 Made with [createapp.dev](https://createapp.dev/)
-
-
-Ok this is my own change
-
-Nooo, noonono this is MY own change
