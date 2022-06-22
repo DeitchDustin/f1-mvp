@@ -31,10 +31,11 @@ const [driverStandings, setDriverStandings] = useState('')
 const [constructors, setConstructors] = useState('')
 
 // Past Races
-const [past, setPast] = useState('')
+const [past, setPast] = useState({Races: []})
 
 //future Races
-const [future, setFuture] = useState('')
+const [future, setFuture] = useState({Races: []})
+
 
 // GETS
   const getChamps = () => {
@@ -96,6 +97,9 @@ const [future, setFuture] = useState('')
       .then((response) => {
         setPast(response.data.MRData.RaceTable)
       })
+      .then((response) => {
+        setLoadedPast(true);
+      })
       .catch((err) => {
         console.log("Breaking in Get Driver", err);
       });
@@ -109,7 +113,10 @@ const getSched = () => {
     },
   })
     .then((response) => {
-      console.log(response.data.MRData.RaceTable)
+      setFuture(response.data.MRData.RaceTable)
+    })
+    .then((response) => {
+      setLoadedFuture(true);
     })
     .catch((err) => {
       console.log("Breaking in Get Driver", err);
