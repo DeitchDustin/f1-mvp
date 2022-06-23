@@ -15,6 +15,7 @@ const ConstructorsEntry = ({constructor}) => {
       <b>Nationality: </b> {constructor.Constructor.nationality}
       </div>
       <b>Wiki page: </b> <a  href={constructor.Constructor.url}>{constructor.Constructor.url}</a>
+      <hr className="solid"></hr>
     </div>
   )
 }

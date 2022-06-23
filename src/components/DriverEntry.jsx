@@ -21,6 +21,7 @@ const DriverEntry = ({driver}) => {
      | <b>Birthday: </b> {driver.Driver.dateOfBirth} {' '}
       </div>
       <b>Wiki page: </b> <a href={driver.Driver.url}>{driver.Driver.url}</a>
+      <hr className="solid"></hr>
     </div>
   )
 }
