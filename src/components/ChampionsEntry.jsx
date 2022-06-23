@@ -1,7 +1,8 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root';
 import {
-  ChampsWrapper
+  ChampsWrapper,
+  Bold
 } from "../Components/StyledComponents.jsx";
 
 const ChampionsEntry = ({champ}) => {

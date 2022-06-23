@@ -15,7 +15,11 @@ import {
   User,
   CommentHeader,
   Row,
-  GoTo
+  GoTo,
+  FullWrap,
+  Select,
+  ChatWrapper
+
 } from "./Components/StyledComponents.jsx";
 import axios from 'axios'
 
@@ -169,10 +173,11 @@ const handleSelect = (e) => {
   }, [year]);
 
     return (
-   <div>
+   <FullWrap>
     <MainHeader>
       F1 Information
     </MainHeader>
+    <Select>
     Select Year:
     <select onChange={(e) => {handleSelect(e)}}>
       <option value="2022">2022</option>
@@ -203,6 +208,7 @@ const handleSelect = (e) => {
        {' '}
       <small>Go to Comments</small>{' '}
     </GoTo>
+    </Select>
     <Mainbuttons>
           <button onClick={(e) =>
             {
@@ -244,7 +250,8 @@ const handleSelect = (e) => {
        {standings ? <Constructors constructors={constructors}/> : null }
        {champs ? <Champions champsInfo={champsInfo}/> : null }
       </AppWrap>
-      <CommentHeader><u>Comments</u></CommentHeader>
+      <CommentHeader>Comments</CommentHeader>
+      <ChatWrapper>
       <Chat id='chat'>
         {allComments.map((comment, index)=>(<ChatEntry helper={helper} comment={comment} key={index}/>))}
       </Chat>
@@ -260,7 +267,8 @@ const handleSelect = (e) => {
             Add Comment{" "}
           </button>
          </User>
-      </div>
+         </ChatWrapper>
+      </FullWrap>
     );
 }
 

@@ -7,7 +7,8 @@ import {
   WrapComments,
   Row,
   Clickables,
-  Likes
+  Likes,
+
 } from "../Components/StyledComponents.jsx";
 
 const ChatEntry = ({comment, helper}) => {
@@ -39,7 +40,7 @@ const ChatEntry = ({comment, helper}) => {
        </img>
        <img  onClick={() => {handleLike(comment._id, -1)}} width='20px' height='20px' src='https://img.icons8.com/stickers/344/poor-quality.png'></img>
        </Likes>
-        <b>Posted By: </b>  {comment.user}
+        <b>Posted By: </b>  <i>{comment.user}</i>
          <Row> <small>on <Moment format='MMMM Do YYYY'>{comment.date}</Moment></small></Row>
       <div> {comment.comment} </div>
      </WrapComments>
