@@ -6,9 +6,15 @@ import CurrentDrivers from './components/CurrentDrivers.jsx';
 import CurrentSchedule from './components/CurrentSchedule.jsx';
 import Champions from './components/Champions.jsx';
 import Constructors from './components/Constructors.jsx';
+import ChatEntry from './components/ChatEntry.jsx'
 import {
   Mainbuttons,
-  MainHeader
+  MainHeader,
+  AppWrap,
+  Chat,
+  User,
+  CommentHeader,
+  Row
 } from "./Components/StyledComponents.jsx";
 import axios from 'axios'
 
@@ -35,6 +41,13 @@ const [past, setPast] = useState({Races: []})
 
 //future Races
 const [future, setFuture] = useState({Races: []})
+
+// Submit Comments
+const [user, setUser] = useState('')
+const [comment, setComment] = useState('')
+
+// Get Comments
+const [allComments, setAllComments] = useState([]);
 
 
 // GETS
@@ -97,9 +110,6 @@ const [future, setFuture] = useState({Races: []})
       .then((response) => {
         setPast(response.data.MRData.RaceTable)
       })
-      .then((response) => {
-        setLoadedPast(true);
-      })
       .catch((err) => {
         console.log("Breaking in Get Driver", err);
       });
@@ -115,13 +125,29 @@ const getSched = () => {
     .then((response) => {
       setFuture(response.data.MRData.RaceTable)
     })
-    .then((response) => {
-      setLoadedFuture(true);
-    })
     .catch((err) => {
       console.log("Breaking in Get Driver", err);
     });
 };
+
+// Get Chat information
+const helper = () => {
+  axios.get('http://localhost:3001/f1')
+  .then((data) => {
+    setAllComments(data.data.reverse())
+  })
+};
+
+const handleClick = () => {
+  let addThis = {user: user, comment: comment}
+  if (user !== "" && comment !== "") {
+  axios.post('http://localhost:3001/f1', addThis)
+  helper();
+  } else {
+    alert('Please enter username and comment')
+  }
+};
+
 
 
 // Invoking
@@ -131,14 +157,15 @@ const getSched = () => {
     getConstructors();
     getResults();
     getSched();
+    helper();
   }, []);
 
     return (
-      <>
-        <MainHeader>
-          F1 Information
-        </MainHeader>
-        <Mainbuttons>
+   <div>
+    <MainHeader>
+      F1 Information
+    </MainHeader>
+    <Mainbuttons>
           <button onClick={(e) =>
             {
               setSchedule(true),
@@ -173,12 +200,29 @@ const getSched = () => {
              }}>World Drivers' Champions
           </button>
         </Mainbuttons>
-
+      <AppWrap>
        {drivers ? <CurrentDrivers driverStandings={driverStandings}/> : null }
        { schedule ? <CurrentSchedule past={past} future={future}/> : null}
        {standings ? <Constructors constructors={constructors}/> : null }
        {champs ? <Champions champsInfo={champsInfo}/> : null }
-      </>
+      </AppWrap>
+      <CommentHeader><u>Comments</u></CommentHeader>
+      <Chat>
+        {allComments.map((comment, index)=>(<ChatEntry helper={helper} comment={comment} key={index}/>))}
+      </Chat>
+
+      <User> Username: {' '} <input onChange={(e) => setUser(e.target.value)} placeholder='Enter Username'/></User>
+        <User></User>
+       <User>Comment: <textarea onChange={(e) => setComment(e.target.value)} placeholder='Enter Comment' rows='4' cols='70'/></User>
+        <div>
+        </div>
+        <User>
+          <button onClick={(e) => {handleClick()}} type="submit">
+            {" "}
+            Add Comment{" "}
+          </button>
+         </User>
+      </div>
     );
 }
 
