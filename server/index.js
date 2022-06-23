@@ -36,7 +36,7 @@ app.put('/f1', (req, res) => {
       console.log(err)
   }
   else{
-      console.log("Updated User : ", user);
+      res.sendStatus(200);
   }
   })
 });

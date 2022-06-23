@@ -15,13 +15,14 @@ const CurrentSchedule = ({past, future}) => {
 
   return (
     <div>
-      <h2>Current Schedule ({past.season})</h2>
+      {past.season === '2022' ? <h2>Current Schedule ({past.season})</h2> :
+      <h2>{past.season} Schedule </h2> }
       {past.season === '2022' ? <div> <SchedButton onClick={(e) =>{setNotRaced(true), setRaced(false)}}>All Races</SchedButton>
         <SchedButton onClick={(e) => {setNotRaced(false), setRaced(true)}}>Completed Races</SchedButton> </div> : null}
         {raced === true ?
         <div>
            {past.Races.map((race, index) =>
-           (<ResultsEntry race={race} key={index}/>))}
+           (<ResultsEntry year={past.season} race={race} key={index}/>))}
         </div> :
          <div>
           {future.Races.map((race, index) => (<Schedule race={race} key={index}/>))}

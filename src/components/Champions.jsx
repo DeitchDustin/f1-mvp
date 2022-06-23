@@ -3,13 +3,17 @@ import { hot } from 'react-hot-loader/root';
 import ChampionsEntry from './ChampionsEntry.jsx';
 
 const Champions = ({champsInfo}) => {
-  let sortChamps = champsInfo.sort(function(a, b) {
-    return a - b;
-  })
+  let champs;
+  if(champsInfo[0].season === '1950') {
+     champs = champsInfo.reverse()
+  } else {
+     champs = champsInfo;
+  }
+
   return (
     <div>
       <h2>Past Champions</h2>
-      {champsInfo.map((champ, index) =>
+      {champs.map((champ, index) =>
         (<ChampionsEntry champ={champ} key={index}/>)
      )}
     </div>

@@ -1,7 +1,11 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import {
+  SchedButton,
+  Row
+} from "../Components/StyledComponents.jsx";
 
-const ResultsEntry = ({race}) => {
+const ResultsEntry = ({race, year}) => {
 
   return (
     <div>
@@ -18,7 +22,9 @@ const ResultsEntry = ({race}) => {
         <b>Date: </b> {race.date}
         </div>
       </div>
-      <b>Laps: </b> {race.Results[0].laps} | <b>Fastest Lap: </b>  {race.Results[0].FastestLap.Time.time} | <b>Race Length: </b> {race.Results[0].Time.time}
+      { race.Results[0].FastestLap  ? <Row>
+        <b>Laps: </b> {race.Results[0].laps} | <b>Fastest Lap: </b>  {race.Results[0].FastestLap.Time.time} | <b>Race Length: </b> {race.Results[0].Time.time}
+      </Row> : null}
       <div>
       <div>
         <b>Winner: </b>

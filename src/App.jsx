@@ -14,7 +14,8 @@ import {
   Chat,
   User,
   CommentHeader,
-  Row
+  Row,
+  GoTo
 } from "./Components/StyledComponents.jsx";
 import axios from 'axios'
 
@@ -49,6 +50,8 @@ const [comment, setComment] = useState('')
 // Get Comments
 const [allComments, setAllComments] = useState([]);
 
+// Year Select
+const [year, setYear] = useState('2022')
 
 // GETS
   const getChamps = () => {
@@ -70,7 +73,7 @@ const [allComments, setAllComments] = useState([]);
 
   const getDriverStandings = () => {
     axios({
-      url: `http://ergast.com/api/f1/2022/driverStandings.json`,
+      url: `http://ergast.com/api/f1/${year}/driverStandings.json`,
       method: "get",
       headers: {
       },
@@ -86,7 +89,7 @@ const [allComments, setAllComments] = useState([]);
   // Get Constructors Standings
   const getConstructors = () => {
     axios({
-      url: `http://ergast.com/api/f1/2022/constructorStandings.json`,
+      url: `http://ergast.com/api/f1/${year}/constructorStandings.json`,
       method: "get",
       headers: {
       },
@@ -102,7 +105,7 @@ const [allComments, setAllComments] = useState([]);
   // Get Results for Past Races
   const getResults = () => {
     axios({
-      url: `http://ergast.com/api/f1/2022/results/1.json`,
+      url: `http://ergast.com/api/f1/${year}/results/1.json`,
       method: "get",
       headers: {
       },
@@ -148,6 +151,11 @@ const handleClick = () => {
   }
 };
 
+const handleSelect = (e) => {
+  e.preventDefault();
+  setYear(e.target.value)
+};
+
 
 
 // Invoking
@@ -158,13 +166,43 @@ const handleClick = () => {
     getResults();
     getSched();
     helper();
-  }, []);
+  }, [year]);
 
     return (
    <div>
     <MainHeader>
       F1 Information
     </MainHeader>
+    Select Year:
+    <select onChange={(e) => {handleSelect(e)}}>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+      <option value="2019">2019</option>
+      <option value="2018">2018</option>
+      <option value="2017">2017</option>
+      <option value="2016">2016</option>
+      <option value="2015">2015</option>
+      <option value="2014">2014</option>
+      <option value="2013">2013</option>
+      <option value="2012">2012</option>
+      <option value="2011">2011</option>
+      <option value="2010">2010</option>
+      <option value="2009">2009</option>
+      <option value="2008">2008</option>
+      <option value="2007">2007</option>
+      <option value="2006">2006</option>
+      <option value="2005">2005</option>
+      <option value="2004">2004</option>
+      <option value="2003">2003</option>
+      <option value="2002">2002</option>
+      <option value="2001">2001</option>
+      <option value="2000">2000</option>
+    </select>
+    <GoTo href='#chat'>
+       {' '}
+      <small>Go to Comments</small>{' '}
+    </GoTo>
     <Mainbuttons>
           <button onClick={(e) =>
             {
@@ -207,7 +245,7 @@ const handleClick = () => {
        {champs ? <Champions champsInfo={champsInfo}/> : null }
       </AppWrap>
       <CommentHeader><u>Comments</u></CommentHeader>
-      <Chat>
+      <Chat id='chat'>
         {allComments.map((comment, index)=>(<ChatEntry helper={helper} comment={comment} key={index}/>))}
       </Chat>
 

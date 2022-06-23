@@ -9,7 +9,7 @@ const DriverEntry = ({driver}) => {
       <div>
       <b>Name: </b> {driver.Driver.givenName} {' '}
          {driver.Driver.familyName} {' '}
-         <b>Driver#: </b> {driver.Driver.permanentNumber !== 'undefined' ? driver.Driver.permanentNumber : 'N/A'}
+         <b>Driver#: </b> {driver.Driver.permanentNumber ? driver.Driver.permanentNumber : 'N/A'}
       </div>
       <b>Constructor:</b> {driver.Constructors[0].name}
       <div>

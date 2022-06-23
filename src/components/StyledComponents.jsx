@@ -75,4 +75,15 @@ export const Clickables = styled.small`
 export const Likes = styled.small`
   display: flex;
   justify-content: flex-start;
+  img:hover {
+    cursor: pointer;
+}
+`
+
+export const GoTo = styled.a`
+  display: flex;
+  justify-content: space-between;
+  &:hover {
+    color: red;
+  }
 `

@@ -17,25 +17,29 @@ const ChatEntry = ({comment, helper}) => {
   .then (() => {
     helper();
   })
- }
+  .catch(() => {
+    console.log('Bad')
+  })
+ };
 
  const handleLike = (id, value) => {
    console.log(value)
    axios.put('http://localhost:3001/f1', {_id: id, value: value})
    .then (() => {
-     helper();
+    console.log('This'),
+    helper()
    })
  };
 
   return (
     <div>
       <WrapComments>
-      <Likes>Likes ( {comment.liked} ) <img onClick={() => {handleLike(comment._id, 1)}} width='20px' height='20px'
-       src='https://img.icons8.com/cute-clipart/344/thumb-up.png'>
+      <Likes >Likes ( {comment.liked} ) <img onClick={() => {handleLike(comment._id, 1)}} width='20px' height='20px'
+       src='https://img.icons8.com/cute-clipart/344/thumb-up.png' >
        </img>
        <img  onClick={() => {handleLike(comment._id, -1)}} width='20px' height='20px' src='https://img.icons8.com/stickers/344/poor-quality.png'></img>
        </Likes>
-        <b>Posted By: </b>
+        <b>Posted By: </b>  {comment.user}
          <Row> <small>on <Moment format='MMMM Do YYYY'>{comment.date}</Moment></small></Row>
       <div> {comment.comment} </div>
      </WrapComments>
