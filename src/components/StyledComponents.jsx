@@ -9,7 +9,7 @@ export const Mainbuttons = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: black;
-  background-color: red;
+  background-color: #FF1801;
 `;
 
 export const MainHeader = styled.h1`
@@ -17,7 +17,7 @@ export const MainHeader = styled.h1`
   display: flex;
   justify-content: center;
   color: white;
-  background-color: red;
+  background-color: #FF1801;
   width: 99.15%;
   border-style: solid;
   border-width: 2px;
@@ -39,8 +39,8 @@ export const AppWrap = styled.div`
   font-family: 'Raleway', sans-serif;
   border-style: solid;
   border-width: 10px;
-  border-color: red;
-  
+  border-color: #FF1801;
+
 `
 
 export const Chat = styled.div`
@@ -63,7 +63,7 @@ export const ChatWrapper = styled.div`
   flex-direction: column;
   border-style: solid;
   border-width: 10px;
-  border-color: red;
+  border-color: #FF1801;
   margin: 10px
 `
 
@@ -89,7 +89,7 @@ export const CommentHeader = styled.h2`
   font-family: 'Raleway', sans-serif;
   justify-content: center;
   width: 99.25%;
-  background: red;
+  background: #FF1801;
   color: white;
   border-style: solid;
   border-width: 2px;
@@ -103,7 +103,7 @@ export const Clickables = styled.small`
   display: flex;
   justify-content: flex-start;
   &:hover {
-    color: red;
+    color: #FF1801;
   }
   font-family: 'Raleway', sans-serif;
 `
@@ -120,7 +120,7 @@ export const GoTo = styled.a`
   display: flex;
   justify-content: space-between;
   &:hover {
-    color: red;
+    color: #FF1801;
   }
   margin: 5px;
 `
@@ -140,5 +140,5 @@ export const Select = styled.div`
 export const Borders = styled.div`
   border-style: solid;
   border-width: 20px;
-  border-color: red;
+  border-color: #FF1801;
 `
