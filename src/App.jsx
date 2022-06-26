@@ -258,7 +258,7 @@ const handleSelect = (e) => {
 
       <User> Username: {' '} <input onChange={(e) => setUser(e.target.value)} placeholder='Enter Username'/></User>
         <User></User>
-       <User>Comment: <textarea onChange={(e) => setComment(e.target.value)} placeholder='Enter Comment' rows='4' cols='70'/></User>
+       <User>Comment: {' '} <textarea onChange={(e) => setComment(e.target.value)} placeholder='Enter Comment' rows='4' cols='70'/></User>
         <div>
         </div>
         <User>

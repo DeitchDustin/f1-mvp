@@ -9,8 +9,12 @@ export const Mainbuttons = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: black;
+  border-radius: 30px;
   background-color: #FF1801;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
+
 
 export const MainHeader = styled.h1`
   font-family: 'Raleway', sans-serif;
@@ -22,6 +26,7 @@ export const MainHeader = styled.h1`
   border-style: solid;
   border-width: 2px;
   border-color: black;
+  border-radius: 30px;
 `
 export const SchedButton = styled.button`
   margin: 10px;
@@ -40,7 +45,7 @@ export const AppWrap = styled.div`
   border-style: solid;
   border-width: 10px;
   border-color: #FF1801;
-
+  border-radius: 30px;
 `
 
 export const Chat = styled.div`
@@ -50,11 +55,13 @@ export const Chat = styled.div`
   overflow: auto;
   height: 350px;
   width: 85%;
-  margin: 30px;
+  margin: 10px;
   border-style: solid;
-  border-width: 1px;
-  border-color: black;
-  margin: 5px;
+  border-width: 3px;
+  border-color: grey;
+  border-radius: 10px;
+  margin-top: 16px;
+  margin-bottom: 10px
   font-family: 'Raleway', sans-serif;
 `
 export const ChatWrapper = styled.div`
@@ -64,13 +71,16 @@ export const ChatWrapper = styled.div`
   border-style: solid;
   border-width: 10px;
   border-color: #FF1801;
-  margin: 10px
+  margin-top: 10px;
+  border-radius: 30px;
+  margin-bottom: 10px;
 `
 
 export const User = styled.div`
   display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
+  margin: 5px;
 `
 
 export const WrapComments = styled.div`
@@ -82,6 +92,8 @@ export const WrapComments = styled.div`
   border-color: black;
   margin: 3px;
   font-family: 'Raleway', sans-serif;
+  border-radius: 10px;
+  margin:10px;
 `
 
 export const CommentHeader = styled.h2`
@@ -94,6 +106,7 @@ export const CommentHeader = styled.h2`
   border-style: solid;
   border-width: 2px;
   border-color: black;
+  border-radius: 30px;
 `
 
 export const Row = styled.div`
@@ -106,6 +119,7 @@ export const Clickables = styled.small`
     color: #FF1801;
   }
   font-family: 'Raleway', sans-serif;
+  margin-left: 15px;
 `
 
 export const Likes = styled.small`
